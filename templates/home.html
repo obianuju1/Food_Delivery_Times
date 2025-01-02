@@ -1,113 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Courier Data Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Prediction</title>
 </head>
 <body>
-  <h1>Courier Data Form</h1>
-  <form id="courier-form">
-    <label for="Distance_km">Distance (km):</label>
-    <input type="number" id="Distance_km" name="Distance_km"><br><br>
+    <h1>Courier Delivery Time Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="POST">
+        <!-- Distance -->
+        <label for="Distance_km">Distance (km):</label>
+        <input type="number" step="0.1" id="Distance_km" name="Distance_km" required><br><br>
 
-    <label for="Preparation_Time_min">Preparation Time (min):</label>
-    <input type="number" id="Preparation_Time_min" name="Preparation_Time_min"><br><br>
+        <!-- Preparation Time -->
+        <label for="Preparation_Time_min">Preparation Time (min):</label>
+        <input type="number" id="Preparation_Time_min" name="Preparation_Time_min" required><br><br>
 
-    <label for="Courier_Experience_yrs">Courier Experience (years):</label>
-    <input type="number" id="Courier_Experience_yrs" name="Courier_Experience_yrs"><br><br>
+        <!-- Courier Experience -->
+        <label for="Courier_Experience_yrs">Courier Experience (years):</label>
+        <input type="number" id="Courier_Experience_yrs" name="Courier_Experience_yrs" required><br><br>
 
-    <label for="Weather_Clear">Weather Clear:</label>
-    <select id="Weather_Clear" name="Weather_Clear">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <!-- Weather Conditions (Yes/No) -->
+        <label for="Weather_Clear">Weather Clear:</label>
+        <select id="Weather_Clear" name="Weather_Clear">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Weather_Foggy">Weather Foggy:</label>
-    <select id="Weather_Foggy" name="Weather_Foggy">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Weather_Foggy">Weather Foggy:</label>
+        <select id="Weather_Foggy" name="Weather_Foggy">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Weather_Rainy">Weather Rainy:</label>
-    <select id="Weather_Rainy" name="Weather_Rainy">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Weather_Rainy">Weather Rainy:</label>
+        <select id="Weather_Rainy" name="Weather_Rainy">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Weather_Snowy">Weather Snowy:</label>
-    <select id="Weather_Snowy" name="Weather_Snowy">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Weather_Snowy">Weather Snowy:</label>
+        <select id="Weather_Snowy" name="Weather_Snowy">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Weather_Windy">Weather Windy:</label>
-    <select id="Weather_Windy" name="Weather_Windy">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Weather_Windy">Weather Windy:</label>
+        <select id="Weather_Windy" name="Weather_Windy">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Traffic_Level_High">Traffic Level High:</label>
-    <select id="Traffic_Level_High" name="Traffic_Level_High">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <!-- Traffic Levels (Yes/No) -->
+        <label for="Traffic_Level_High">Traffic Level High:</label>
+        <select id="Traffic_Level_High" name="Traffic_Level_High">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Traffic_Level_Low">Traffic Level Low:</label>
-    <select id="Traffic_Level_Low" name="Traffic_Level_Low">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Traffic_Level_Low">Traffic Level Low:</label>
+        <select id="Traffic_Level_Low" name="Traffic_Level_Low">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Traffic_Level_Medium">Traffic Level Medium:</label>
-    <select id="Traffic_Level_Medium" name="Traffic_Level_Medium">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Traffic_Level_Medium">Traffic Level Medium:</label>
+        <select id="Traffic_Level_Medium" name="Traffic_Level_Medium">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Time_of_Day_Afternoon">Time of Day Afternoon:</label>
-    <select id="Time_of_Day_Afternoon" name="Time_of_Day_Afternoon">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <!-- Time of Day (Yes/No) -->
+        <label for="Time_of_Day_Afternoon">Time of Day Afternoon:</label>
+        <select id="Time_of_Day_Afternoon" name="Time_of_Day_Afternoon">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Time_of_Day_Evening">Time of Day Evening:</label>
-    <select id="Time_of_Day_Evening" name="Time_of_Day_Evening">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Time_of_Day_Evening">Time of Day Evening:</label>
+        <select id="Time_of_Day_Evening" name="Time_of_Day_Evening">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Time_of_Day_Morning">Time of Day Morning:</label>
-    <select id="Time_of_Day_Morning" name="Time_of_Day_Morning">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Time_of_Day_Morning">Time of Day Morning:</label>
+        <select id="Time_of_Day_Morning" name="Time_of_Day_Morning">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Time_of_Day_Night">Time of Day Night:</label>
-    <select id="Time_of_Day_Night" name="Time_of_Day_Night">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Time_of_Day_Night">Time of Day Night:</label>
+        <select id="Time_of_Day_Night" name="Time_of_Day_Night">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Vehicle_Type_Bike">Vehicle Type Bike:</label>
-    <select id="Vehicle_Type_Bike" name="Vehicle_Type_Bike">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <!-- Vehicle Types (Yes/No) -->
+        <label for="Vehicle_Type_Bike">Vehicle Type Bike:</label>
+        <select id="Vehicle_Type_Bike" name="Vehicle_Type_Bike">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Vehicle_Type_Car">Vehicle Type Car:</label>
-    <select id="Vehicle_Type_Car" name="Vehicle_Type_Car">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Vehicle_Type_Car">Vehicle Type Car:</label>
+        <select id="Vehicle_Type_Car" name="Vehicle_Type_Car">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <label for="Vehicle_Type_Scooter">Vehicle Type Scooter:</label>
-    <select id="Vehicle_Type_Scooter" name="Vehicle_Type_Scooter">
-      <option value="1">Yes</option>
-      <option value="0">No</option>
-    </select><br><br>
+        <label for="Vehicle_Type_Scooter">Vehicle Type Scooter:</label>
+        <select id="Vehicle_Type_Scooter" name="Vehicle_Type_Scooter">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
 
-    <input type="submit" value="Submit">
-  </form>
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Display Prediction Text if available -->
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
 </body>
 </html>
